@@ -1,0 +1,16 @@
+# Snort IDS – Investigation Commands
+
+# Navigate to the Snort directory
+cd /etc/snort
+
+# Inspect SSH traffic in the PCAP
+sudo tcpdump -nn -r Intro_to_IDS.pcap 'tcp port 22'
+
+# Search for the SSH detection rule
+grep -Ri 'SSH Connection Detected' /etc/snort/rules/
+
+# Extract the SSH rule SID
+grep -Ri 'SSH Connection Detected' /etc/snort/rules/ | grep -o 'sid:[0-9]*'
+
+# Search for the ping detection rule
+grep -Ri 'Ping Detected' /etc/snort/rules/
